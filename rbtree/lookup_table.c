@@ -41,7 +41,11 @@ lookup_table_interpolate(struct rb_root* root, double v)
   {
     demo_node = rb_entry(n, MyRBDemo, rb_node);
 
-    if(v < demo_node->key)
+    if(v == demo_node->key)
+    {
+      break;
+    }
+    else if(v < demo_node->key)
     {
       if(n->rb_left == NULL)
       {
