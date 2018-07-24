@@ -150,29 +150,29 @@ lookup_table_delete(struct rb_root* root, MyRBDemo* n)
 int
 main()
 {
-   struct rb_root    root = RB_ROOT;
-   int i;
-   MyRBDemo*      d;
+  struct rb_root    root = RB_ROOT;
+  int i;
+  MyRBDemo*      d;
 
-   printf("beginning to insert\n");
-   for(i = 0; i < 3000000; i++)
-   {
-      d = (MyRBDemo*)malloc(sizeof(MyRBDemo));
-      rb_init_node(&d->rb_node);
+  printf("beginning to insert\n");
+  for(i = 0; i < 3000000; i++)
+  {
+    d = (MyRBDemo*)malloc(sizeof(MyRBDemo));
+    rb_init_node(&d->rb_node);
 
-      d->key   = i;
-      d->data  = i;
+    d->key   = i;
+    d->data  = i;
 
-      if(lookup_table_insert(&root, d) != 0)
-      {
-         printf("insert failed for %d\n", i);
-         return -1;
-      }
-   }
+    if(lookup_table_insert(&root, d) != 0)
+    {
+      printf("insert failed for %d\n", i);
+      return -1;
+    }
+  }
 
-   lookup_table_interpolate(&root, -1);
-   lookup_table_interpolate(&root, 10);
-   lookup_table_interpolate(&root, 3000001);
-   lookup_table_interpolate(&root, 1000000.5);
-   return 0;
+  lookup_table_interpolate(&root, -1);
+  lookup_table_interpolate(&root, 10);
+  lookup_table_interpolate(&root, 3000001);
+  lookup_table_interpolate(&root, 1000000.5);
+  return 0;
 }
